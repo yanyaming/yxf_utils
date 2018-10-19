@@ -1,0 +1,3 @@
+include *
+recursive-include yxf_utils *.py
+recursive-include yxf_tests *.py

@@ -1,5 +1,7 @@
 #!/bin/sh
 #CentOS
+#close selinux
+sudo cp -f ./config /etc/selinux/config &&
 #update software lib
 sudo yum -y install epel-release &&
 sudo yum makecache &&
