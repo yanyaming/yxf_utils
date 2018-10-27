@@ -1,12 +1,9 @@
 #!/bin/sh
-#install nginx
-sudo yum -y install nginx &&
-sudo systemctl enable nginx &&
-echo "check service:" &&
+# -*- coding: utf-8 -*-
+yum -y install nginx &&
+systemctl enable nginx &&
 systemctl status nginx &&
-#install config file
-cp -f ./default.conf /etc/nginx/default.d/default.conf &&
-#firewall
+cp -vfR ./default.conf /etc/nginx/conf.d/default.conf &&
 firewall-cmd --zone=public --add-port=80/tcp --permanent &&
 firewall-cmd --reload &&
 exit 0

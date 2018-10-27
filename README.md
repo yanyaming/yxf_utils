@@ -19,16 +19,35 @@ yxf_utils : 通用工具
 
 ## 手动操作项
 
-### osenv:
-无
+### 操作系统环境配置osenv:
+CentOS-GUI取消自动休眠：  
 
-### pythonenv:
+	settings->privacy->screen lock->off；
+	settings->power->blank screen->never;
+	settings->power->automatic suspend->off;  
+
+ssh远程登录（默认端口22）：  
+
+	ssh [ip] -l [user]
+	(input password)
+
+### Python环境配置pythonenv:
 无  
 
-### shadowsocks:
-需要提前修改shandowsocks.json的IP到服务器的公网IP，以及密码。  
+### 正向代理服务器shadowsocks: 
+无  
 
-### postgresql:
+### 反向代理内网穿透服务器frp:
+无  
+
+### 反向代理网络应用服务器nginx:
+配置文件/etc/nginx/nginx.conf设置user root，注释掉两个log文档路径，把server{}字段注释掉；  
+视情况修改自定义default.conf配置文件（可配置多个服务）。  
+
+### 应用网关服务器uwsgi:
+视情况修改自定义uwsgi.ini配置文件（可新建多个ini文件配置多个服务，配置后需要修改service文件）。  
+
+### 关系数据库postgresql:
 安装后默认生成一个OS用户postgres和一个数据库管理员postgres。  
 默认数据库路径为/var/lib/pgsql/[version]/data/postgresql。  
 
@@ -39,7 +58,7 @@ yxf_utils : 通用工具
 2.使用数据库的postgres进入psql，修改数据库管理员密码：  
 
 	psql -U postgres  
-	ALTER USER postgres WITH PASSWORD '[pwd]';  
+	>ALTER USER postgres WITH PASSWORD '[pwd]';  
 
 3.修改配置文件，允许远程管理：  
 配置文件/var/lib/pgsql/10/data/postgresql.conf：   
@@ -56,13 +75,17 @@ yxf_utils : 通用工具
 	CREATE USER mysiteuser CREATEDB LOGIN PASSWORD '[pwd]';  
 	GRANT ALL ON DATABASE mysite TO mysiteuser;  
 
-### nginx:
-配置文件/etc/nginx.conf设置user root;  
-配置文件/etc/nginx.conf注释掉两个log文档路径，把server{}字段注释掉；  
-视情况修改自定义default.conf配置文件（可配置多个服务）。  
+### 非关系数据库mongodb:
+配置文件/etc/mongod.conf，#bind 127.0.0.1取消注释并把ip修改为0.0.0.0；#auth = true取消注释。  
+命令行进入mogodb：  
 
-### uwsgi:
-视情况修改自定义uwsgi.ini配置文件（可新建多个ini文件配置多个服务，配置后需要修改service文件）。  
+	mongo
+	>use myspider
+	>db.addUser('myspideruser','[pwd]');
 
-### django:
-无  
+远程密码登录连接>mongo [ip]:[port]/[db] -u [user] -p [password]（命令行测试远程登录失败，但编程可用）。  
+
+### 内存数据库redis:	
+配置文件/etc/redis.conf，network栏目里注释掉bind 127.0.0.1，设置protected-mode no关闭保护模式；  
+配置文件/etc/redis.conf，security栏目里#requirepass foobared取消注释，把foobared修改为自己的密码。  
+远程密码登录连接>redis-cli -h [host] -p [port] -a [password]。  

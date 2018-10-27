@@ -1,3 +1,4 @@
+#middle file
 __pycache__/*
 *.pyc
 *~
@@ -5,3 +6,6 @@ __pycache__/*
 biuld/*
 dist/*
 *.egg-info
+
+#secret file
+scripts/deploy_*
