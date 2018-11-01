@@ -18,6 +18,7 @@ yum -y install git &&
 yum -y install tree &&
 yum -y install pandoc &&
 yum -y install telnet &&
+yum -y install nmap &&
 yxf_echo_info "#install pip"
 #usage:
 #pip freeze -----------see all installed site-packages and versions

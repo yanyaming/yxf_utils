@@ -63,7 +63,7 @@ ssh远程登录（默认端口22）：
 3.修改配置文件，允许远程管理：  
 配置文件/var/lib/pgsql/10/data/postgresql.conf：   
  
-	listen_addresses = ‘localhost’ # 改为listen_addresses=’*’   
+	listen_addresses = 'localhost' # 取消注释并改为listen_addresses='*'   
 	
 配置文件/var/lib/pgsql/10/data/pg_hba.conf 添加如下语句，同时其余全改为trust:  
 
@@ -74,16 +74,6 @@ ssh远程登录（默认端口22）：
 	CREATE DATABASE mysite;  
 	CREATE USER mysiteuser CREATEDB LOGIN PASSWORD '[pwd]';  
 	GRANT ALL ON DATABASE mysite TO mysiteuser;  
-
-### 非关系数据库mongodb:
-配置文件/etc/mongod.conf，#bind 127.0.0.1取消注释并把ip修改为0.0.0.0；#auth = true取消注释。  
-命令行进入mogodb：  
-
-	mongo
-	>use myspider
-	>db.addUser('myspideruser','[pwd]');
-
-远程密码登录连接>mongo [ip]:[port]/[db] -u [user] -p [password]（命令行测试远程登录失败，但编程可用）。  
 
 ### 内存数据库redis:	
 配置文件/etc/redis.conf，network栏目里注释掉bind 127.0.0.1，设置protected-mode no关闭保护模式；  

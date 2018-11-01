@@ -27,4 +27,4 @@ OS：CentOS 7 x64,root
 
 区域：尽量选亚太（除了日本），比如新加坡  
 
-用途：正向代理服务器+爬虫docker-master服务器+爬虫db服务器  
+用途：正向代理服务器+爬虫myspider-master服务器
