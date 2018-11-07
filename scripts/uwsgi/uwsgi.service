@@ -4,6 +4,7 @@ After=network.target remote-fs.target nss-lookup.target
 
 [Service]
 Type=forking
+PIDFile=/run/uwsgi.pid
 #multiserver:ExecStart=/usr/bin/uwsgi -d --ini /etc/uwsgi/uwsgi1.ini && /usr/bin/uwsgi -d --ini /etc/uwsgi/uwsgi2.ini
 ExecStart=/usr/bin/uwsgi -d --ini /etc/uwsgi/uwsgi.ini
 ExecReload=/usr/bin/uwsgi --reload uwsgi.pid
