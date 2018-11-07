@@ -6,6 +6,7 @@ then
 	git pull
 else
 	cd /opt
+	# git bug!!!cannot download
 	git clone -b master https://www.github.com/yanyaming/yxf_myspider_py_scrapy.git
 fi
 

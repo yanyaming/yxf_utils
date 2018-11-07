@@ -26,30 +26,43 @@ CentOS-GUI取消自动休眠：
 	settings->power->blank screen->never;
 	settings->power->automatic suspend->off;  
 
+CentOS-GUI自动登录：  
+修改配置文件/etc/gdm/custom.conf，在[daemon]下添加  
+
+	AutomaticLoginEnable=true
+	AutomaticLogin=root
+
 ssh远程登录（默认端口22）：  
 
 	ssh [ip] -l [user]
 	(input password)
 
 ### Python环境配置pythonenv:
-无  
+程序名python3,pip3  
 
 ### 正向代理服务器shadowsocks: 
-无  
+端口50003  
 
 ### 反向代理内网穿透服务器frp:
-无  
+域名配置：frps不设置，frpc设置custom_domains为某个实际域名的二级域名，交给域名服务商解析（需要提前添加*.domain解析）  
+端口8003:web
+端口8004:dashboard  
+端口8005:ssh  
+端口8006:staticfile   
 
 ### 反向代理网络应用服务器nginx:
 配置文件/etc/nginx/nginx.conf设置user root，注释掉两个log文档路径，把server{}字段注释掉；  
 视情况修改自定义default.conf配置文件（可配置多个服务）。  
+端口80  
 
 ### 应用网关服务器uwsgi:
 视情况修改自定义uwsgi.ini配置文件（可新建多个ini文件配置多个服务，配置后需要修改service文件）。  
+端口9090  
 
 ### 关系数据库postgresql:
 安装后默认生成一个OS用户postgres和一个数据库管理员postgres。  
 默认数据库路径为/var/lib/pgsql/[version]/data/postgresql。  
+端口5432  
 
 1.切换到OS的postgres用户：   
  
@@ -79,3 +92,4 @@ ssh远程登录（默认端口22）：
 配置文件/etc/redis.conf，network栏目里注释掉bind 127.0.0.1，设置protected-mode no关闭保护模式；  
 配置文件/etc/redis.conf，security栏目里#requirepass foobared取消注释，把foobared修改为自己的密码。  
 远程密码登录连接>redis-cli -h [host] -p [port] -a [password]。  
+端口6379  
