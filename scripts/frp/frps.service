@@ -1,0 +1,16 @@
+[Unit]
+Description=frps
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=forking
+PIDFile=/run/frps.pid
+ExecStart=/bin/bash /opt/frps/start_server.sh
+ExecReload=/opt/frps/frps reload
+KillSignal=SIGQUIT
+TimeoutStopSec=5
+KillMode=process
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

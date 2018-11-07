@@ -2,9 +2,6 @@
 __pycache__/*
 *.pyc
 *~
-biuld/*
+build/*
 dist/*
 *.egg-info
-
-#secret file
-scripts/deploy_*

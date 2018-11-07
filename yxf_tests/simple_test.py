@@ -18,7 +18,14 @@ def simple_test():
     # TEST_WORK_DIR = os.path.join(TEST_BASE_DIR, 'workdir')+'/filename'  # 测试的工作路径
 
     # 在这里导入你的待测试代码依赖的库
-
+    try:
+        pass
+    except:
+        pass
+    else:
+        pass
+    finally:
+        pass
     pass
 
 

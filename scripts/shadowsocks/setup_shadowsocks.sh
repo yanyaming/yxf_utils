@@ -19,6 +19,7 @@ systemctl enable shadowsocks &&
 yxf_echo_info "firewall"
 firewall-cmd --zone=public --add-port=50003/tcp --permanent &&
 firewall-cmd --reload &&
+systemctl start shadowsocks &&
 systemctl status shadowsocks &&
 yxf_echo_success "install success"
 exit 0
