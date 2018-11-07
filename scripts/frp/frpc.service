@@ -5,7 +5,7 @@ After=network.target remote-fs.target nss-lookup.target
 [Service]
 Type=forking
 PIDFile=/run/frpc.pid
-ExecStart=/opt/frpc/frpc -c /opt/frpc/frpc.ini
+ExecStart=/bin/bash /opt/frpc/start_server.sh
 ExecReload=/opt/frpc/frpc reload
 KillSignal=SIGQUIT
 TimeoutStopSec=5

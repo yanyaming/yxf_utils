@@ -10,6 +10,7 @@ firewall-cmd --zone=public --add-port=8004/tcp --permanent &&
 firewall-cmd --zone=public --add-port=8005/tcp --permanent &&
 firewall-cmd --zone=public --add-port=8006/tcp --permanent &&
 firewall-cmd --reload &&
+yxf_root ./frp/frps &&
 yxf_cp ./frp/frps /opt/frps &&
 yxf_cp ./frp/frps.service /usr/lib/systemd/system/frps.service &&
 systemctl enable frps &&

@@ -7,6 +7,7 @@ source ./_common/_common.sh
 yxf_echo_info "#install frpc"
 firewall-cmd --zone=public --add-port=80/tcp --permanent &&
 firewall-cmd --reload &&
+yxf_root ./frp/frpc &&
 yxf_cp ./frp/frpc /opt/frpc &&
 yxf_cp ./frp/frpc.service /usr/lib/systemd/system/frpc.service &&
 systemctl enable frpc &&
