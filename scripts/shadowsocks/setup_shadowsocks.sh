@@ -6,6 +6,7 @@ cd ..
 source ./_common/_common.sh
 yxf_echo_info "install shadowsocks"
 pip install shadowsocks &&
+yxf_mkdir /etc/shadowsocks &&
 yxf_cp ./shadowsocks/shadowsocks.json /etc/shadowsocks/shadowsocks.json
 read -p "please input your server ip:" ip
 read -p -s "please set your server password:" password

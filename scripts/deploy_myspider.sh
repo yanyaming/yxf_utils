@@ -18,3 +18,10 @@ else
 	cd /opt
 	git clone -b master https://www.github.com/yanyaming/yxf_utils.git
 fi
+
+firewall-cmd --zone=public --add-port=50003/tcp --permanent  #shadowsocks
+firewall-cmd --zone=public --add-port=8080/tcp --permanent  #web.py
+firewall-cmd --zone=public --add-port=6379/tcp --permanent  #redis
+#firewall-cmd --zone=public --add-port=8001/tcp --permanent  #ipproxypool local
+firewall-cmd --zone=public --add-port=6800/tcp --permanent  #scrapyd
+firewall-cmd --reload

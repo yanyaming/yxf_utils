@@ -44,7 +44,7 @@ ssh远程登录（默认端口22）：
 端口50003  
 
 ### 反向代理内网穿透服务器frp:
-域名配置：frps不设置，frpc设置custom_domains为某个实际域名的二级域名，交给域名服务商解析（需要提前添加*.domain解析）  
+域名配置：frps不设置，frpc设置custom_domains为某个实际域名的二级域名，交给域名服务商解析（需要提前添加*.domain解析），访问时仍需要输入8003端口。  
 端口8003:web
 端口8004:dashboard  
 端口8005:ssh  
@@ -52,8 +52,8 @@ ssh远程登录（默认端口22）：
 
 ### 反向代理网络应用服务器nginx:
 配置文件/etc/nginx/nginx.conf设置user root，注释掉两个log文档路径，把server{}字段注释掉；  
-视情况修改自定义default.conf配置文件（可配置多个服务）。  
-端口80  
+视情况修改自定义default.conf配置文件。  
+端口80/443  
 
 ### 应用网关服务器uwsgi:
 视情况修改自定义uwsgi.ini配置文件（可新建多个ini文件配置多个服务，配置后需要修改service文件）。  
@@ -93,3 +93,6 @@ ssh远程登录（默认端口22）：
 配置文件/etc/redis.conf，security栏目里#requirepass foobared取消注释，把foobared修改为自己的密码。  
 远程密码登录连接>redis-cli -h [host] -p [port] -a [password]。  
 端口6379  
+
+### 自定义服务:
+端口81：TCP通信  

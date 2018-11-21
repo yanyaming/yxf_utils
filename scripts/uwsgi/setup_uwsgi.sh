@@ -7,6 +7,7 @@ source ./_common/_common.sh
 yxf_echo_info "install uwsgi"
 yum -y install python-devel &&
 pip install uwsgi &&
+yxf_mkdir /etc/uwsgi &&
 yxf_cp ./uwsgi/uwsgi.ini /etc/uwsgi/uwsgi.ini &&
 yxf_cp ./uwsgi/uwsgi.service /usr/lib/systemd/system/uwsgi.service &&
 yxf_root /usr/lib/systemd/system/uwsgi.service &&
