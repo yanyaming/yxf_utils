@@ -1,4 +1,4 @@
-yxf_utils : 通用工具
+yxf_utils : 通用代码脚本
 =========================================================
 
 1.软件环境的安装脚本scripts  
@@ -20,6 +20,11 @@ yxf_utils : 通用工具
 ## 手动操作项
 
 ### 操作系统环境配置osenv:
+Linux修改管理员密码：  
+	
+	passwd
+	(input password)
+
 CentOS-GUI取消自动休眠：  
 
 	settings->privacy->screen lock->off；
@@ -66,7 +71,7 @@ ssh远程登录（默认端口22）：
 
 1.切换到OS的postgres用户：   
  
-	su postgres  
+	sudo su postgres  
 	
 2.使用数据库的postgres进入psql，修改数据库管理员密码：  
 
@@ -93,6 +98,3 @@ ssh远程登录（默认端口22）：
 配置文件/etc/redis.conf，security栏目里#requirepass foobared取消注释，把foobared修改为自己的密码。  
 远程密码登录连接>redis-cli -h [host] -p [port] -a [password]。  
 端口6379  
-
-### 自定义服务:
-端口81：TCP通信  

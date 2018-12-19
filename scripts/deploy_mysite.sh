@@ -1,8 +1,11 @@
 #!/bin/sh
 # -*- coding: utf-8 -*-
+sudo yum -y install git
 if [ -d /opt/yxf_mysite_py_django ]
 then
 	cd /opt/yxf_mysite_py_django
+	git fetch --all
+	git reset --hard origin/master
 	git pull
 else
 	cd /opt
@@ -12,6 +15,8 @@ fi
 if [ -d /opt/yxf_yixue_py ]
 then
 	cd /opt/yxf_yixue_py
+	git fetch --all
+	git reset --hard origin/master
 	git pull
 else
 	cd /opt
@@ -21,6 +26,8 @@ fi
 if [ -d /opt/yxf_utils ]
 then
 	cd /opt/yxf_utils
+	git fetch --all
+	git reset --hard origin/master
 	git pull
 else
 	cd /opt
@@ -38,5 +45,5 @@ firewall-cmd --zone=public --add-port=8004/tcp --permanent  #frps
 firewall-cmd --zone=public --add-port=8005/tcp --permanent  #frps
 firewall-cmd --zone=public --add-port=8006/tcp --permanent  #frps
 firewall-cmd --zone=public --add-port=8007/tcp --permanent  #websocket
-firewall-cmd --zone=public --add-port=8008/tcp --permanent  #tcpsocket
+firewall-cmd --zone=public --add-port=50008/tcp --permanent  #tcpsocket
 firewall-cmd --reload

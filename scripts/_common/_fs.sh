@@ -58,7 +58,7 @@ yxf_rename() {
 }
 #切换文件目录到root状态
 yxf_root() {
-	chmod -vR 754 $1
+	chmod -vR 777 $1
 	chown -vR root $1
 	chgrp -vR root $1
 }
