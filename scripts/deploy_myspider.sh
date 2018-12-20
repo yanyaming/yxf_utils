@@ -23,6 +23,9 @@ else
 	git clone -b master https://www.github.com/yanyaming/yxf_utils.git
 fi
 
+chmod 777 -vR /opt/yxf_utils
+chmod 777 -vR /opt/yxf_myspider_py_scrapy
+
 firewall-cmd --zone=public --add-port=50003/tcp --permanent  #shadowsocks
 firewall-cmd --zone=public --add-port=8080/tcp --permanent  #web.py spiderdataapi
 firewall-cmd --zone=public --add-port=6379/tcp --permanent  #redis

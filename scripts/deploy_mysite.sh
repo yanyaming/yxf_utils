@@ -34,6 +34,10 @@ else
 	git clone -b master https://www.github.com/yanyaming/yxf_utils.git
 fi
 
+chmod 777 -vR /opt/yxf_utils
+chmod 777 -vR /opt/yxf_mysite_py_django
+chmod 777 -vR /opt/yxf_yixue_py
+
 firewall-cmd --zone=public --add-port=80/tcp --permanent  #nginx web
 firewall-cmd --zone=public --add-port=443/tcp --permanent  #nginx web
 firewall-cmd --zone=public --add-port=50003/tcp --permanent  #shadowsocks
