@@ -98,3 +98,12 @@ ssh远程登录（默认端口22）：
 配置文件/etc/redis.conf，security栏目里#requirepass foobared取消注释，把foobared修改为自己的密码。  
 远程密码登录连接>redis-cli -h [host] -p [port] -a [password]。  
 端口6379  
+
+## 各种奇怪Bug  
+
+pip安装失败：升级setuptools(pip3 install --upgrade setuptools)  
+
+网站在线文件上传失败：境外服务器的通病，只能在线传小文件，大文件用ftp的方法代替  
+
+Pycharm写markdown文档，行尾的空格被吃了：似乎无法解决，以前没问题，只在某个项目里突然出现，很无脑，只能加TAB作为代码块      
+
