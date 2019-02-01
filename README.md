@@ -65,8 +65,7 @@ ssh远程登录（默认端口22）：
 端口9090  
 
 ### 关系数据库postgresql:
-安装后默认生成一个OS用户postgres和一个数据库管理员postgres。  
-默认数据库路径为/var/lib/pgsql/[version]/data/postgresql。  
+安装后默认生成一个OS用户postgres和一个数据库管理员postgres。默认数据库路径为/var/lib/pgsql/[version]/data/postgresql。  
 端口5432  
 
 1.切换到OS的postgres用户：   
@@ -99,11 +98,13 @@ ssh远程登录（默认端口22）：
 远程密码登录连接>redis-cli -h [host] -p [port] -a [password]。  
 端口6379  
 
-## 各种奇怪Bug  
+### 非关系数据库mongodb:
+安装后默认生成mongod服务（实际数据库）和mongos服务（分布式应用），一般只用到mongod单机数据库服务。默认数据库路径为/var/lib/mongodb。  
+配置文件/etc/mongod.conf，
+端口27017  
+
+## Bug解决  
 
 pip安装失败：升级setuptools(pip3 install --upgrade setuptools)  
 
 网站在线文件上传失败：境外服务器的通病，只能在线传小文件，大文件用ftp的方法代替  
-
-Pycharm写markdown文档，行尾的空格被吃了：似乎无法解决，以前没问题，只在某个项目里突然出现，很无脑，只能加TAB作为代码块      
-
