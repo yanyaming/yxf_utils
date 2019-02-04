@@ -4,9 +4,11 @@ After=syslog.target network.target
 
 [Service]
 Type=forking
-User=mongodb
+User=root
 EnvironmentFile=/etc/sysconfig/mongod
-ExecStart=/usr/bin/mongod --config /etc/mongodb/mongod.conf
+ExecStart=/usr/bin/mongod --config /etc/mongod.conf
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/usr/bin/mongod --shutdown --config /etc/mongod.conf
 PrivateTmp=true
 LimitNOFILE=64000
 TimeoutStartSec=180

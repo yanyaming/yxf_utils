@@ -68,22 +68,19 @@ ssh远程登录（默认端口22）：
 安装后默认生成一个OS用户postgres和一个数据库管理员postgres。默认数据库路径为/var/lib/pgsql/[version]/data/postgresql。  
 端口5432  
 
-1.切换到OS的postgres用户：   
- 
-	sudo su postgres  
-	
-2.使用数据库的postgres进入psql，修改数据库管理员密码：  
+配置账号密码：  
 
+	切换到OS的postgres用户，使用数据库的postgres进入psql，修改数据库管理员密码：   
+ 
+	sudo su postgres
 	psql -U postgres  
 	>ALTER USER postgres WITH PASSWORD '[pwd]';  
 
-3.修改配置文件，允许远程管理：  
-配置文件/var/lib/pgsql/10/data/postgresql.conf：   
- 
-	listen_addresses = 'localhost' # 取消注释并改为listen_addresses='*'   
-	
-配置文件/var/lib/pgsql/10/data/pg_hba.conf 添加如下语句，同时其余全改为trust:  
+配置远程管理：  
 
+	配置文件/var/lib/pgsql/10/data/postgresql.conf：   
+	listen_addresses = 'localhost' # 取消注释并改为listen_addresses='*'   
+	配置文件/var/lib/pgsql/10/data/pg_hba.conf 添加如下语句，同时其余全改为trust:  
 	host    all            all      0.0.0.0/0（允许任何计算机远程）  trust  
 
 新建数据库和用户：  
@@ -93,14 +90,16 @@ ssh远程登录（默认端口22）：
 	GRANT ALL ON DATABASE mysite TO mysiteuser;  
 
 ### 内存数据库redis:	
-配置文件/etc/redis.conf，network栏目里注释掉bind 127.0.0.1，设置protected-mode no关闭保护模式；  
-配置文件/etc/redis.conf，security栏目里#requirepass foobared取消注释，把foobared修改为自己的密码。  
-远程密码登录连接>redis-cli -h [host] -p [port] -a [password]。  
+配置远程登录：配置文件/etc/redis.conf，network栏目里注释掉bind 127.0.0.1，设置protected-mode no关闭保护模式；  
+配置账号密码：配置文件/etc/redis.conf，security栏目里#requirepass foobared取消注释，把foobared修改为自己的密码。  
+远程命令行登录连接>redis-cli -h [host] -p [port] -a [password]。可使用专用GUI客户端连接。  
 端口6379  
 
 ### 非关系数据库mongodb:
+配置远程登录：配置文件/etc/mongod.conf，bindIp由127.0.0.1改为0.0.0.0。  
+配置账号密码：在admin数据库里新建root管理员账号以及各个数据库的账号，然后在配置文件/etc/mongod.conf，添加security:[\n\r]authorization: enabled。  
 安装后默认生成mongod服务（实际数据库）和mongos服务（分布式应用），一般只用到mongod单机数据库服务。默认数据库路径为/var/lib/mongodb。  
-配置文件/etc/mongod.conf，
+远程命令行登录连接>mongo --host [host] --port [port] --username [user] --password [pass] --authenticationDatabase [db]。可使用专用GUI客户端连接。  
 端口27017  
 
 ## Bug解决  
