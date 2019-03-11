@@ -40,7 +40,6 @@ chmod 777 -vR /opt/yxf_yixue_py
 
 firewall-cmd --zone=public --add-port=80/tcp --permanent  #nginx web
 firewall-cmd --zone=public --add-port=443/tcp --permanent  #nginx web
-firewall-cmd --zone=public --add-port=50003/tcp --permanent  #shadowsocks
 firewall-cmd --zone=public --add-port=5432/tcp --permanent  #postgresql
 #firewall-cmd --zone=public --add-port=9090/tcp --permanent  #uwsgi local
 firewall-cmd --zone=public --add-port=8002/tcp --permanent  #yixue
@@ -49,5 +48,6 @@ firewall-cmd --zone=public --add-port=8004/tcp --permanent  #frps
 firewall-cmd --zone=public --add-port=8005/tcp --permanent  #frps
 firewall-cmd --zone=public --add-port=8006/tcp --permanent  #frps
 firewall-cmd --zone=public --add-port=8007/tcp --permanent  #websocket
+firewall-cmd --zone=public --add-port=8010/tcp --permanent  #shadowsocks
 firewall-cmd --zone=public --add-port=50008/tcp --permanent  #tcpsocket
 firewall-cmd --reload

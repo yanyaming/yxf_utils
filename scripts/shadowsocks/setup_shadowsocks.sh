@@ -18,7 +18,7 @@ yxf_cp ./shadowsocks/shadowsocks.service /usr/lib/systemd/system/shadowsocks.ser
 yxf_root /usr/lib/systemd/system/shadowsocks.service &&
 systemctl enable shadowsocks &&
 yxf_echo_info "firewall"
-firewall-cmd --zone=public --add-port=50003/tcp --permanent &&
+firewall-cmd --zone=public --add-port=8010/tcp --permanent &&
 firewall-cmd --reload &&
 systemctl start shadowsocks &&
 systemctl status shadowsocks &&
